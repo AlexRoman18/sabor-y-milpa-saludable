@@ -10,33 +10,73 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as EtapasRouteImport } from './routes/etapas'
+import { Route as ForaneosRouteImport } from './routes/foraneos'
+import { Route as MilpaRouteImport } from './routes/milpa'
+import { Route as PlatosRouteImport } from './routes/platos'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EtapasRoute = EtapasRouteImport.update({
+  id: '/etapas',
+  path: '/etapas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ForaneosRoute = ForaneosRouteImport.update({
+  id: '/foraneos',
+  path: '/foraneos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MilpaRoute = MilpaRouteImport.update({
+  id: '/milpa',
+  path: '/milpa',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlatosRoute = PlatosRouteImport.update({
+  id: '/platos',
+  path: '/platos',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/etapas': typeof EtapasRoute
+  '/foraneos': typeof ForaneosRoute
+  '/milpa': typeof MilpaRoute
+  '/platos': typeof PlatosRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/etapas': typeof EtapasRoute
+  '/foraneos': typeof ForaneosRoute
+  '/milpa': typeof MilpaRoute
+  '/platos': typeof PlatosRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/etapas': typeof EtapasRoute
+  '/foraneos': typeof ForaneosRoute
+  '/milpa': typeof MilpaRoute
+  '/platos': typeof PlatosRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/etapas' | '/foraneos' | '/milpa' | '/platos'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/etapas' | '/foraneos' | '/milpa' | '/platos'
+  id: '__root__' | '/' | '/etapas' | '/foraneos' | '/milpa' | '/platos'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  EtapasRoute: typeof EtapasRoute
+  ForaneosRoute: typeof ForaneosRoute
+  MilpaRoute: typeof MilpaRoute
+  PlatosRoute: typeof PlatosRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +88,43 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/etapas': {
+      id: '/etapas'
+      path: '/etapas'
+      fullPath: '/etapas'
+      preLoaderRoute: typeof EtapasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/foraneos': {
+      id: '/foraneos'
+      path: '/foraneos'
+      fullPath: '/foraneos'
+      preLoaderRoute: typeof ForaneosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/milpa': {
+      id: '/milpa'
+      path: '/milpa'
+      fullPath: '/milpa'
+      preLoaderRoute: typeof MilpaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/platos': {
+      id: '/platos'
+      path: '/platos'
+      fullPath: '/platos'
+      preLoaderRoute: typeof PlatosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  EtapasRoute: EtapasRoute,
+  ForaneosRoute: ForaneosRoute,
+  MilpaRoute: MilpaRoute,
+  PlatosRoute: PlatosRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
