@@ -33,10 +33,11 @@ const tips = [
 ];
 
 const sections = [
-  { to: "/platos", t: "Plato del Bien Comer y Jarra del Buen Beber", c: "bg-leaf", e: "🍽️" },
-  { to: "/milpa", t: "La dieta de la milpa", c: "bg-corn", e: "🌽" },
-  { to: "/foraneos", t: "Recetas fáciles para foráneos", c: "bg-terra", e: "🎒" },
-  { to: "/etapas", t: "Nutrición por etapa de vida", c: "bg-sky", e: "👵" },
+  { to: "/platos", t: "Plato del Bien Comer y Jarra del Buen Beber", c: "bg-leaf", e: "🍽️", full: false },
+  { to: "/milpa", t: "La dieta de la milpa", c: "bg-corn", e: "🌽", full: false },
+  { to: "/foraneos", t: "Recetas fáciles para foráneos", c: "bg-terra", e: "🎒", full: false },
+  { to: "/etapas", t: "Nutrición por etapa de vida", c: "bg-sky", e: "👵", full: false },
+  { to: "/imc", t: "Calcula tu IMC en segundos", c: "bg-primary", e: "⚖️", full: true },
 ] as const;
 
 function Index() {
@@ -54,6 +55,7 @@ function Index() {
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link to="/platos" className="rounded-full bg-primary px-6 py-3 font-extrabold text-primary-foreground transition hover:-translate-y-0.5">Ver el plato</Link>
+              <Link to="/imc" className="rounded-full bg-foreground px-6 py-3 font-extrabold text-background transition hover:-translate-y-0.5">Calcular mi IMC</Link>
               <Link to="/foraneos" className="rounded-full border-2 border-foreground px-6 py-3 font-extrabold transition hover:bg-foreground hover:text-background">Soy foráneo</Link>
             </div>
           </div>
@@ -96,7 +98,13 @@ function Index() {
         <h2 className="font-display text-4xl font-black">Explora</h2>
         <div className="mt-8 grid gap-5 md:grid-cols-2">
           {sections.map((s) => (
-            <Link key={s.to} to={s.to} className={`${s.c} group flex items-center justify-between rounded-3xl p-8 text-foreground transition hover:-rotate-1`}>
+            <Link
+              key={s.to}
+              to={s.to}
+              className={`${s.c} ${s.full ? "md:col-span-2" : ""} group flex items-center justify-between rounded-3xl p-8 ${
+                s.c === "bg-primary" ? "text-primary-foreground" : "text-foreground"
+              } transition hover:-rotate-1`}
+            >
               <span className="font-display text-2xl font-black">{s.t}</span>
               <span className="text-5xl transition group-hover:scale-125">{s.e}</span>
             </Link>

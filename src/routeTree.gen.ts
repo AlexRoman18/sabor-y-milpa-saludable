@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as EtapasRouteImport } from './routes/etapas'
 import { Route as ForaneosRouteImport } from './routes/foraneos'
+import { Route as ImcRouteImport } from './routes/imc'
 import { Route as MilpaRouteImport } from './routes/milpa'
 import { Route as PlatosRouteImport } from './routes/platos'
 
@@ -30,6 +31,11 @@ const ForaneosRoute = ForaneosRouteImport.update({
   path: '/foraneos',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ImcRoute = ImcRouteImport.update({
+  id: '/imc',
+  path: '/imc',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MilpaRoute = MilpaRouteImport.update({
   id: '/milpa',
   path: '/milpa',
@@ -45,6 +51,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/etapas': typeof EtapasRoute
   '/foraneos': typeof ForaneosRoute
+  '/imc': typeof ImcRoute
   '/milpa': typeof MilpaRoute
   '/platos': typeof PlatosRoute
 }
@@ -52,6 +59,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/etapas': typeof EtapasRoute
   '/foraneos': typeof ForaneosRoute
+  '/imc': typeof ImcRoute
   '/milpa': typeof MilpaRoute
   '/platos': typeof PlatosRoute
 }
@@ -60,21 +68,23 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/etapas': typeof EtapasRoute
   '/foraneos': typeof ForaneosRoute
+  '/imc': typeof ImcRoute
   '/milpa': typeof MilpaRoute
   '/platos': typeof PlatosRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/etapas' | '/foraneos' | '/milpa' | '/platos'
+  fullPaths: '/' | '/etapas' | '/foraneos' | '/imc' | '/milpa' | '/platos'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/etapas' | '/foraneos' | '/milpa' | '/platos'
-  id: '__root__' | '/' | '/etapas' | '/foraneos' | '/milpa' | '/platos'
+  to: '/' | '/etapas' | '/foraneos' | '/imc' | '/milpa' | '/platos'
+  id: '__root__' | '/' | '/etapas' | '/foraneos' | '/imc' | '/milpa' | '/platos'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   EtapasRoute: typeof EtapasRoute
   ForaneosRoute: typeof ForaneosRoute
+  ImcRoute: typeof ImcRoute
   MilpaRoute: typeof MilpaRoute
   PlatosRoute: typeof PlatosRoute
 }
@@ -102,6 +112,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ForaneosRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/imc': {
+      id: '/imc'
+      path: '/imc'
+      fullPath: '/imc'
+      preLoaderRoute: typeof ImcRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/milpa': {
       id: '/milpa'
       path: '/milpa'
@@ -123,6 +140,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   EtapasRoute: EtapasRoute,
   ForaneosRoute: ForaneosRoute,
+  ImcRoute: ImcRoute,
   MilpaRoute: MilpaRoute,
   PlatosRoute: PlatosRoute,
 }
