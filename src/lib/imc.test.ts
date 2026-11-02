@@ -38,6 +38,14 @@ describe("clasificarImc", () => {
     expect(gradoObesidad(37)).toBe("II");
     expect(gradoObesidad(41)).toBe("III");
   });
+
+  it("clasifica con el mismo decimal que se muestra en pantalla", () => {
+    // 68 kg / 1.65 m = 24.977, que se muestra como "25.0" y por tanto es sobrepeso.
+    expect(calcularImc(68, 165)).toBeCloseTo(24.977, 3);
+    expect(redondearImc(24.977).toFixed(1)).toBe("25.0");
+    expect(clasificarImc(24.977).clave).toBe("sobre");
+    expect(clasificarImc(18.45).clave).toBe("normal");
+  });
 });
 
 describe("rangoPesoSaludable", () => {

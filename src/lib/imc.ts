@@ -69,10 +69,17 @@ export function calcularImc(pesoKg: number, alturaCm: number): number | null {
   return pesoKg / (metros * metros);
 }
 
+/** El IMC se muestra y se clasifica con un solo decimal, para que el número
+ *  que la persona ve y la categoría que recibe nunca se contradigan. */
+export function redondearImc(imc: number): number {
+  return Math.round(imc * 10) / 10;
+}
+
 export function clasificarImc(imc: number): ImcCategoria {
-  if (imc < 18.5) return CATEGORIAS[0];
-  if (imc < 25) return CATEGORIAS[1];
-  if (imc < 30) return CATEGORIAS[2];
+  const v = redondearImc(imc);
+  if (v < 18.5) return CATEGORIAS[0];
+  if (v < 25) return CATEGORIAS[1];
+  if (v < 30) return CATEGORIAS[2];
   return CATEGORIAS[3];
 }
 
