@@ -14,44 +14,47 @@ export type ImcCategoria = {
 
 export const ESCALA = { min: 15, max: 40 } as const;
 
-export const CATEGORIAS: ImcCategoria[] = [
-  {
-    clave: "bajo",
-    etiqueta: "Bajo peso",
-    rango: "Menos de 18.5",
-    desde: 0,
-    hasta: 18.5,
-    color: "bg-sky",
-    advice: "Come con más frecuencia y agrega alimentos nutritivos: tortilla con frijol, huevo, aguacate, nueces y leche.",
-  },
-  {
-    clave: "normal",
-    etiqueta: "Peso normal",
-    rango: "18.5 a 24.9",
-    desde: 18.5,
-    hasta: 25,
-    color: "bg-leaf",
-    advice: "Sigue así: plato del bien comer en cada comida, agua simple y al menos 30 minutos de movimiento al día.",
-  },
-  {
-    clave: "sobre",
-    etiqueta: "Sobrepeso",
-    rango: "25 a 29.9",
-    desde: 25,
-    hasta: 30,
-    color: "bg-corn",
-    advice: "Baja refrescos y alimentos con sellos, aumenta verduras y camina más. Un nutriólogo puede armarte un plan realista.",
-  },
-  {
-    clave: "obesidad",
-    etiqueta: "Obesidad",
-    rango: "30 o más",
-    desde: 30,
-    hasta: Infinity,
-    color: "bg-terra",
-    advice: "Acude con tu médico o nutriólogo: con cambios graduales de alimentación y actividad se logran mejoras reales.",
-  },
-];
+const BAJO: ImcCategoria = {
+  clave: "bajo",
+  etiqueta: "Bajo peso",
+  rango: "Menos de 18.5",
+  desde: 0,
+  hasta: 18.5,
+  color: "bg-sky",
+  advice: "Come con más frecuencia y agrega alimentos nutritivos: tortilla con frijol, huevo, aguacate, nueces y leche.",
+};
+
+const NORMAL: ImcCategoria = {
+  clave: "normal",
+  etiqueta: "Peso normal",
+  rango: "18.5 a 24.9",
+  desde: 18.5,
+  hasta: 25,
+  color: "bg-leaf",
+  advice: "Sigue así: plato del bien comer en cada comida, agua simple y al menos 30 minutos de movimiento al día.",
+};
+
+const SOBRE: ImcCategoria = {
+  clave: "sobre",
+  etiqueta: "Sobrepeso",
+  rango: "25 a 29.9",
+  desde: 25,
+  hasta: 30,
+  color: "bg-corn",
+  advice: "Baja refrescos y alimentos con sellos, aumenta verduras y camina más. Un nutriólogo puede armarte un plan realista.",
+};
+
+const OBESIDAD: ImcCategoria = {
+  clave: "obesidad",
+  etiqueta: "Obesidad",
+  rango: "30 o más",
+  desde: 30,
+  hasta: Infinity,
+  color: "bg-terra",
+  advice: "Acude con tu médico o nutriólogo: con cambios graduales de alimentación y actividad se logran mejoras reales.",
+};
+
+export const CATEGORIAS: ImcCategoria[] = [BAJO, NORMAL, SOBRE, OBESIDAD];
 
 export const LIMITES = {
   pesoMin: 15,
@@ -77,10 +80,10 @@ export function redondearImc(imc: number): number {
 
 export function clasificarImc(imc: number): ImcCategoria {
   const v = redondearImc(imc);
-  if (v < 18.5) return CATEGORIAS[0];
-  if (v < 25) return CATEGORIAS[1];
-  if (v < 30) return CATEGORIAS[2];
-  return CATEGORIAS[3];
+  if (v < 18.5) return BAJO;
+  if (v < 25) return NORMAL;
+  if (v < 30) return SOBRE;
+  return OBESIDAD;
 }
 
 /** Grado de obesidad (solo aplica con IMC de 30 o más). */

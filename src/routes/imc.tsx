@@ -144,7 +144,7 @@ function ImcPage() {
         </Card>
 
         <Card className="flex flex-col justify-between overflow-hidden">
-          {imc === null || categoria === null ? (
+          {imcR === null || categoria === null ? (
             <div className="flex h-full min-h-64 flex-col items-center justify-center text-center">
               <span className="text-6xl">🥑</span>
               <p className="mt-4 max-w-xs font-display text-2xl font-black">Escribe tu peso y tu altura</p>
