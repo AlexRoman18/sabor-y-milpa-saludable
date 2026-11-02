@@ -7,6 +7,7 @@ const nav = [
   { to: "/milpa", label: "Dieta de la milpa" },
   { to: "/foraneos", label: "Estudiantes foráneos" },
   { to: "/etapas", label: "Por etapa de vida" },
+  { to: "/imc", label: "Calcula tu IMC" },
 ] as const;
 
 export function SiteHeader() {

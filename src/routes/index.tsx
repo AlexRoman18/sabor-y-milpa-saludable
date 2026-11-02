@@ -33,10 +33,11 @@ const tips = [
 ];
 
 const sections = [
-  { to: "/platos", t: "Plato del Bien Comer y Jarra del Buen Beber", c: "bg-leaf", e: "🍽️" },
-  { to: "/milpa", t: "La dieta de la milpa", c: "bg-corn", e: "🌽" },
-  { to: "/foraneos", t: "Recetas fáciles para foráneos", c: "bg-terra", e: "🎒" },
-  { to: "/etapas", t: "Nutrición por etapa de vida", c: "bg-sky", e: "👵" },
+  { to: "/platos", t: "Plato del Bien Comer y Jarra del Buen Beber", c: "bg-leaf", e: "🍽️", full: false },
+  { to: "/milpa", t: "La dieta de la milpa", c: "bg-corn", e: "🌽", full: false },
+  { to: "/foraneos", t: "Recetas fáciles para foráneos", c: "bg-terra", e: "🎒", full: false },
+  { to: "/etapas", t: "Nutrición por etapa de vida", c: "bg-sky", e: "👵", full: false },
+  { to: "/imc", t: "Calcula tu IMC en segundos", c: "bg-primary", e: "⚖️", full: true },
 ] as const;
 
 function Index() {
