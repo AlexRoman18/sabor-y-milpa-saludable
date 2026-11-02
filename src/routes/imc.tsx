@@ -10,6 +10,7 @@ import {
   gradoObesidad,
   posicionEnEscala,
   rangoPesoSaludable,
+  redondearImc,
 } from "@/lib/imc";
 
 export const Route = createFileRoute("/imc")({
@@ -55,8 +56,9 @@ function ImcPage() {
     () => calcularImc(parseFloat(peso.replace(",", ".")), parseFloat(altura.replace(",", "."))),
     [peso, altura],
   );
-  const categoria = imc === null ? null : clasificarImc(imc);
-  const grado = imc === null ? null : gradoObesidad(imc);
+  const imcR = imc === null ? null : redondearImc(imc);
+  const categoria = imcR === null ? null : clasificarImc(imcR);
+  const grado = imcR === null ? null : gradoObesidad(imcR);
   const saludables = altura === "" ? null : rangoPesoSaludable(parseFloat(altura.replace(",", ".")));
   const datosListos = peso !== "" && altura !== "";
   const edadNum = parseFloat(edad);

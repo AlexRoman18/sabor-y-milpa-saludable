@@ -6,6 +6,7 @@ import {
   gradoObesidad,
   posicionEnEscala,
   rangoPesoSaludable,
+  redondearImc,
 } from "./imc";
 
 describe("calcularImc", () => {
