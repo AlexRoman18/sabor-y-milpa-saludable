@@ -1,9 +1,8 @@
 # Sabor Y Milpa Saludable
 
-La alimentación es un tema sumamente importante para las personas.
-Actúa como un diseñador de ui/ux profesional, crearás un maquetado para una página web que ayude a las personas con información sobre nutrición, como deben nutrirse y que alimentos es recomendable, agrega información oficial sobre el plato del bien comer, el plato del buen beber y la dieta de la milpa, agrega también un apartado para estudiantes foráneos con ideas sobre los platillos que pueden preparar fácilmente pero que les aporta valor nutrimental, el resto de apartados te lo dejo a tu consideración, y lo determinarás con las fuentes de información que te proporcionaré
-Debe ser una página con un tema cálido, amigable y no aburrido
-las páginas con las que te guiarás para poner información y agregar apartados son estas
+La alimentación es un tema sumamente importante para las personas, sin embargo, no muchos sabes como nutrirse correctamente. Esta página fue diseñada para que actúe como un sitio informativo para poder acceder de manera más centrada y fácil información sobre como debemos nutrirnos y las especificaciones a nuestra edad. De igual manera, se agregó un espacio para las personas foráneas ya que muchos por ahorrar dinero suelen comer mal, es por eso, que se agregó el apartado para darle a las personas foráneas más información sobre recetas y tips para que puedan nutrirse y no hacer un gran gasto económico.
+
+las información de este proyecto fue tomanada de páginas oficiales de gobierno y universidades
 https://www.gob.mx/salud/acciones-y-programas/la-dieta-de-la-milpa-298617
 https://www.imss.gob.mx/salud-en-linea/nutricion
 https://www.clinicbarcelona.org/asistencia/vida-saludable/cuidando-al-cuidador/la-nutricion-y-las-personas-mayores?gad_source=1&gad_campaignid=24286728632&gbraid=0AAAAAooC_QlZGaCU0IrLyCRPpvsCNAzyn&gclid=CjwKCAjwo5bXBhAEEiwAkgpgXIbSU1mwG57vWV1yfoI6DAniQpPWePsfd9JT93iqeZZwRX0Uu3VRgRoCC8kQAvD_BwE
