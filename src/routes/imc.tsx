@@ -156,7 +156,7 @@ function ImcPage() {
             <>
               <div>
                 <p className="text-sm font-extrabold uppercase tracking-widest text-muted-foreground">Tu IMC es</p>
-                <p className="font-display text-7xl font-black leading-none md:text-8xl">{imc.toFixed(1)}</p>
+                <p className="font-display text-7xl font-black leading-none md:text-8xl">{imcR.toFixed(1)}</p>
                 <div className={`mt-4 inline-flex flex-wrap items-center gap-2 rounded-full ${categoria.color} px-5 py-2 font-display text-xl font-black text-foreground`}>
                   <span>{categoria.etiqueta}</span>
                   {grado && <span className="text-sm font-bold opacity-80">grado {grado}</span>}
@@ -165,25 +165,29 @@ function ImcPage() {
               </div>
 
               <div className="mt-8">
-                <div className="flex h-6 w-full overflow-hidden rounded-full">
-                  {CATEGORIAS.map((c) => (
-                    <div key={c.clave} className={`${c.color} h-full`} style={{ width: `${ancho(c.desde, c.hasta)}%` }} />
-                  ))}
-                </div>
-                <div className="relative mt-1 h-10">
-                  <div className="absolute -translate-x-1/2" style={{ left: `${posicionEnEscala(imc)}%` }}>
-                    <div className="mx-auto h-4 w-1.5 rounded-full bg-foreground" />
-                    <div className="rounded-full bg-foreground px-2 py-0.5 text-xs font-black text-background">▲</div>
-                  </div>
-                  {[18.5, 25, 30].map((n) => (
-                    <span
-                      key={n}
-                      className="absolute -translate-x-1/2 text-xs font-bold text-muted-foreground"
-                      style={{ left: `${posicionEnEscala(n)}%`, top: "1.5rem" }}
-                    >
-                      {n}
+                <div className="relative pt-10">
+                  <div className="absolute top-0 -translate-x-1/2" style={{ left: `${posicionEnEscala(imcR)}%` }}>
+                    <span className="block whitespace-nowrap rounded-full bg-foreground px-3 py-1 text-sm font-black text-background">
+                      {imcR.toFixed(1)}
                     </span>
-                  ))}
+                    <span className="mx-auto block h-0 w-0 border-x-8 border-t-8 border-x-transparent border-t-foreground" />
+                  </div>
+                  <div className="flex h-6 w-full overflow-hidden rounded-full">
+                    {CATEGORIAS.map((c) => (
+                      <div key={c.clave} className={`${c.color} h-full`} style={{ width: `${ancho(c.desde, c.hasta)}%` }} />
+                    ))}
+                  </div>
+                  <div className="relative h-6">
+                    {[18.5, 25, 30].map((n) => (
+                      <span
+                        key={n}
+                        className="absolute top-1 -translate-x-1/2 text-xs font-bold text-muted-foreground"
+                        style={{ left: `${posicionEnEscala(n)}%` }}
+                      >
+                        {n}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
 
