@@ -47,7 +47,7 @@ function Index() {
         <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-14 md:grid-cols-2 md:py-20">
           <div>
             <span className="inline-block rotate-[-2deg] rounded-full bg-corn px-4 py-1 text-sm font-extrabold text-accent-foreground">¡Hola! Vamos a comer rico 🌶️</span>
-            <h1 className="mt-5 font-display text-5xl font-black leading-[1.05] md:text-7xl">
+            <h1 className="mt-5 font-display text-4xl font-black leading-[1.05] sm:text-5xl md:text-7xl">
               Comer bien <span className="text-primary">sabe</span> a casa.
             </h1>
             <p className="mt-5 max-w-md text-lg text-muted-foreground">

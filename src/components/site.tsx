@@ -1,5 +1,6 @@
-import { Link } from "@tanstack/react-router";
-import type { ReactNode } from "react";
+import { Link, useRouterState } from "@tanstack/react-router";
+import { Menu, X } from "lucide-react";
+import { useEffect, useState, type ReactNode } from "react";
 
 const nav = [
   { to: "/", label: "Inicio" },
@@ -11,13 +12,17 @@ const nav = [
 ] as const;
 
 export function SiteHeader() {
+  const [open, setOpen] = useState(false);
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  useEffect(() => setOpen(false), [pathname]);
+
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background/85 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-5 py-3">
-        <Link to="/" className="flex items-center gap-2 font-display text-2xl font-black text-primary">
-          <span className="blob inline-block h-8 w-8 bg-corn" /> Nutre
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-5 py-3">
+        <Link to="/" className="flex min-w-0 items-center gap-2 font-display text-2xl font-black text-primary">
+          <span className="blob inline-block h-8 w-8 shrink-0 bg-corn" /> Nutre
         </Link>
-        <nav className="flex flex-wrap gap-1 text-sm font-bold">
+        <nav className="hidden flex-wrap gap-1 text-sm font-bold md:flex">
           {nav.map((n) => (
             <Link
               key={n.to}
@@ -30,7 +35,34 @@ export function SiteHeader() {
             </Link>
           ))}
         </nav>
+        <button
+          type="button"
+          className="grid h-10 w-10 shrink-0 place-items-center rounded-full border-2 border-border transition hover:bg-muted md:hidden"
+          aria-label={open ? "Cerrar menú" : "Abrir menú"}
+          aria-expanded={open}
+          onClick={() => setOpen((v) => !v)}
+        >
+          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
       </div>
+      {open && (
+        <nav className="border-t border-border bg-background px-5 py-3 md:hidden">
+          <ul className="grid gap-1 text-base font-bold">
+            {nav.map((n) => (
+              <li key={n.to}>
+                <Link
+                  to={n.to}
+                  activeOptions={{ exact: true }}
+                  className="block rounded-2xl px-4 py-3 text-muted-foreground transition hover:bg-muted hover:text-foreground"
+                  activeProps={{ className: "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground" }}
+                >
+                  {n.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )}
     </header>
   );
 }
