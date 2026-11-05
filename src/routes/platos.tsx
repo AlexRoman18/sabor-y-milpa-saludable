@@ -68,9 +68,9 @@ function Platos() {
             <p className="mt-3 text-muted-foreground">Ordena las bebidas en 6 niveles: de la más recomendable (abajo) a la que debes evitar (arriba).</p>
             <div className="mt-6 flex flex-col-reverse gap-2">
               {jarra.map((j) => (
-                <div key={j.n} className={`${j.c} ${j.w} flex items-center justify-between gap-3 rounded-2xl px-4 py-3`}>
-                  <span className="text-sm font-bold"><span className="font-display text-lg">N{j.n}</span> · {j.t}</span>
-                  <span className="whitespace-nowrap text-sm font-black">{j.q}</span>
+                <div key={j.n} className={`${j.c} ${j.w} flex min-w-0 items-center justify-between gap-3 rounded-2xl px-4 py-3`}>
+                  <span className="min-w-0 text-sm font-bold"><span className="font-display text-lg">N{j.n}</span> · {j.t}</span>
+                  <span className="shrink-0 whitespace-nowrap text-sm font-black">{j.q}</span>
                 </div>
               ))}
             </div>
